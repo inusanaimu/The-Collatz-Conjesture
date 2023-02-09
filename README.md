@@ -1,32 +1,25 @@
 ﻿# The-Collatz-Conjesture
-The Collatz Conjecture is a conjecture in mathematics that states that for any positive integer n, the sequence n, n/2 (if n is even), 3n + 1 (if n is odd) will eventually reach the number 1. This conjecture has been tested for many numbers, but a proof or disproof has not yet been found.
+Collatz Conjecture
+Introduction
+The Collatz conjecture is a conjecture in mathematics that states that for any positive integer n, the sequence obtained from the following algorithm will eventually reach 1:
 
-This repository contains implementations of the Collatz Conjecture in various programming languages. Each implementation takes a positive integer n as input and returns the number of steps it takes to reach 1 using the sequence defined above.
+If n is even, divide it by 2.
+If n is odd, multiply it by 3 and add 1.
+This project is a web-based application that implements the Collatz Conjecture algorithm and visualizes the sequence of numbers.
 
-Contents
-The repository contains the following files and directories:
+Requirements
+The following technologies are required to run this application:
 
-LICENSE: The license for this repository.
-README.md: This file.
-collatz.c: A C implementation of the Collatz Conjecture.
-collatz.py: A Python implementation of the Collatz Conjecture.
-collatz.js: A JavaScript implementation of the Collatz Conjecture.
-tests/: A directory containing test cases for each implementation.
+HTML
+CSS
+JavaScript
+Installation
+To install and run the application, follow these steps:
+
+Clone or download the repository to your local machine.
+Open the index.html file in a web browser.
 Usage
-To use the C implementation, compile the program using a C compiler and run the executable file with a positive integer as the command-line argument.
+The application allows the user to input a positive integer and generate the sequence of numbers according to the Collatz Conjecture algorithm. The sequence is displayed in a table, with each number in a separate row. The user can also reset the input and start again with a new number.
 
-To use the Python implementation, run the script with a positive integer as the command-line argument.
-
-To use the JavaScript implementation, run the script with a positive integer as the command-line argument.
-
-Contribute
-If you would like to contribute to this repository, please do the following:
-
-Fork this repository to your own GitHub account.
-Clone the forked repository to your local machine.
-Add your implementation in the desired programming language.
-Add test cases for your implementation in the tests/ directory.
-Commit your changes and push to your forked repository.
-Submit a pull request to this repository with a description of your changes.
-License
-This repository is licensed under the MIT License.
+Conclusion
+This project is a simple implementation of the Collatz Conjecture algorithm and a visualization of the sequence of numbers. It can be used as a learning tool to understand the concept and the behavior of the algorithm.
