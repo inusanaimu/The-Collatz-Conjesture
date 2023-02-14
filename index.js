@@ -1,7 +1,15 @@
+
+function InputEnter(){
+    if (event.key === "Enter"){
+        event.preventDefault();
+        calculate();
+    }
+}
+
 function calculate() {
     var number = document.getElementById("number").value;
     var result = document.getElementById("result");
-    const step = document.getElementById('steps');
+    const step = document.getElementById("steps");
     var sequence = [number];
     let steps = 0;
     while (number != 1) {
