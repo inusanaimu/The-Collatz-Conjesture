@@ -81,6 +81,7 @@
             margin: auto;
             text-align: center;
             background-color: #eee;
+            display: none;
 
         }
 	</style>
@@ -138,6 +139,10 @@
                 alert("Input a number")
                 return
             }
+            if (number < 0) {
+                alert("Enter a positive Integer")
+                return
+            }
             const label = number
 			var result = document.getElementById("result");
             const step = document.getElementById("steps");
@@ -155,6 +160,9 @@
             console.log(steps)
 			step.innerHTML = "There are "+ steps +" steps taken to arrive at 1 ";
 			result.innerHTML = "The sequence is: " + sequence.join(" | ");
+
+            const canvasDiv = document.getElementById('canvasDiv')
+            canvasDiv.style.display = 'block';
 
             plotGraph( steps, label, sequence)
         }
