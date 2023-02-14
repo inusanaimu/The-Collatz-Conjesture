@@ -42,8 +42,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			margin-top: 50px;
-            margin: auto;
+			margin: 30px auto 30px auto;
             text-align: center;
             max-width: 400px;
             color: #ccc;
@@ -76,6 +75,13 @@
             text-align: left;
             font-size: 12px;
             
+        }
+        #canvasDiv{
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            background-color: #eee;
+
         }
 	</style>
 </head>
@@ -111,13 +117,30 @@
 	<details class="example" id="result-section">
         <summary id="steps" ></summary>
 		<p id="result"></p>
-	</details>
-    <script src="index.js"></script>
-	<!-- <script type="text/javascript">
+    </details>
+	</div>
+    <div id="canvasDiv">
+        <canvas id="myChart"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript">
+
+        function InputEnter(){
+            if (event.key === "Enter"){
+                event.preventDefault();
+                calculate();
+            }
+        }
+
 		function calculate() {
 			var number = document.getElementById("number").value;
+            if (number == '') {
+                alert("Input a number")
+                return
+            }
+            const label = number
 			var result = document.getElementById("result");
-            const step = document.getElementById('steps');
+            const step = document.getElementById("steps");
 			var sequence = [number];
             let steps = 0;
 			while (number != 1) {
@@ -132,7 +155,43 @@
             console.log(steps)
 			step.innerHTML = "There are "+ steps +" steps taken to arrive at 1 ";
 			result.innerHTML = "The sequence is: " + sequence.join(" | ");
-		}
-	</script> -->
+
+            plotGraph( steps, label, sequence)
+        }
+            
+        function plotGraph(labels, label, data){
+                const ctx = document.getElementById('myChart');
+                new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: createArray(labels),
+                    datasets: [{
+                      label: `path taken by ${label}`,
+                      data: data,
+                      borderWidth: 1,
+                    //   borderColor: rgba(152, 125, 17, 0.5)
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+            }
+		
+
+function createArray(number){
+
+    const rangeArray = [];
+    for (let i = 0; i <= number; i++) {
+        rangeArray.push(i);
+    }
+    return rangeArray
+}
+
+	</script>
 </body>
 </html>
