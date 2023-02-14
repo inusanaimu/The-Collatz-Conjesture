@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Collatz Conjecture</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
 	<style type="text/css" contenteditable="true">
 
 
@@ -42,14 +43,12 @@
 			flex-direction: column;
 			align-items: center;
 			margin-top: 50px;
-		}
-		#result-section p {
-			font-size: 16px;
-			margin-top: 10px;
-            color: #ccc;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: auto;
+            text-align: center;
             max-width: 400px;
+            color: #ccc;
 		}
+	
         #steps{
             color: #ccc;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -98,19 +97,7 @@
                         <li>7 * 3 + 1 = 22</li>
                         <li>22 / 2 = 11</li>
                         <li>11 * 3 + 1 = 34 ...</li>
-                        <!-- <li>34 / 2 = 17</li>
-                        <li>17 * 3 + 1 = 52</li>
-                        <li>52 / 2 = 26</li>
-                        <li>26 / 2 = 13</li>
-                        <li>13 * 3 + 1 = 40</li>
-                        <li>40 / 2 = 20</li>
-                        <li>20 / 2 = 10</li>
-                        <li>10 / 2 = 5</li>
-                        <li>5 * 3 + 1 = 16</li>
-                        <li>16 / 2 = 8</li>
-                        <li>8 / 2 = 4</li>
-                        <li>4 / 2 = 2</li>
-                        <li>2 / 2 = 1</li> -->
+            
                     </ul>
                 <li>As you can see, the sequence eventually reaches the number 1. However, the Collatz Conjecture states that this will happen for any positive integer, not just for the example 7.</li>
                 </ul>
@@ -119,11 +106,12 @@
 		<input type="number" id="number" placeholder="Enter a digit">
 		<button onclick="calculate()">Calculate</button>
 	</div>
-	<div id="result-section">
-        <p id="steps"></p>
+	<details class="example" id="result-section">
+        <summary id="steps" ></summary>
 		<p id="result"></p>
-	</div>
-	<script type="text/javascript">
+	</details>
+    <script src="index.js"></script>
+	<!-- <script type="text/javascript">
 		function calculate() {
 			var number = document.getElementById("number").value;
 			var result = document.getElementById("result");
@@ -143,6 +131,6 @@
 			step.innerHTML = "There are "+ steps +" steps taken to arrive at 1 ";
 			result.innerHTML = "The sequence is: " + sequence.join(" | ");
 		}
-	</script>
+	</script> -->
 </body>
 </html>
