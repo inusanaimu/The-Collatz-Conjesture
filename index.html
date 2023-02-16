@@ -18,10 +18,18 @@
 		#input-section input {
             width: 200px;
 			height: 30px;
+            border-radius: 5px;
 			margin-top: 20px;
 			text-align: center;
 			font-size: 20px;
+            outline: none;
 		}
+        #number::-webkit-outer-spin-button,
+        #number::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
 
         #input-section input::placeholder {
             color: dodgerblue;
@@ -32,14 +40,16 @@
 		#input-section button {
 			width: 200px;
 			height: 40px;
+            border-width: 0;
+            border-radius: 5px;
 			margin-top: 20px;
-			background-color: blue;
+			background-color: rgb(25, 122, 222);
 			color: white;
 			font-size: 20px;
 			cursor: pointer;
 		}
 		#result-section {
-			display: flex;
+			display: none;
 			flex-direction: column;
 			align-items: center;
 			margin: 30px auto 30px auto;
@@ -81,7 +91,8 @@
             margin: auto;
             text-align: center;
             background-color: #eee;
-            display: none;
+            display: block;
+            border-radius: 10px;
 
         }
 	</style>
@@ -111,7 +122,7 @@
             </details>
             </div>
             
-                <input onkeypress="InputEnter()" type="number" id="number" placeholder="Enter a digit">
+                <input onkeypress="InputEnter()" autofocus autocomplete="false" type="number" id="number" placeholder="Enter a digit">
                 <button  onclick="calculate()">Calculate</button>
             
 	</div>
@@ -180,6 +191,7 @@
         
         function plotGraph(labels, label, data){
             const canvasDiv = document.getElementById('canvasDiv');
+            const resultSection = document.getElementById('result-section');
             const ctx = document.getElementById('myChart');
             let chart = Chart.getChart(ctx);
             if(chart) {
@@ -214,6 +226,7 @@
                 }
             });
             canvasDiv.style.display = 'block';
+            resultSection.style.display = 'flex';
         }
 		
         

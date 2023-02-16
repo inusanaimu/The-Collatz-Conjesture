@@ -74,6 +74,7 @@ body{
     margin: auto;
     text-align: center;
     background-color: #eee;
-    display: none;
+    display: block;
+    border-radius: 5px;
 
 }
