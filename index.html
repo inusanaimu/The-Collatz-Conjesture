@@ -167,8 +167,10 @@
             let newObj = {steps, label, sequence}
 
             const exists = mapArray.some(obj => JSON.stringify(obj) === JSON.stringify(newObj))
-            if(!exists){mapArray.push(newObj)}
-            console.log(mapArray)
+            if(!exists){
+                mapArray.push(newObj)
+                console.log(mapArray)
+            }
             plotGraph(steps, label, sequence)
         }
         
@@ -177,48 +179,52 @@
         }
         
         function plotGraph(labels, label, data){
-            const canvasDiv = document.getElementById('canvasDiv')
-            canvasDiv.style.display = 'block';
+            const canvasDiv = document.getElementById('canvasDiv');
             const ctx = document.getElementById('myChart');
-            const oldChart = Chart.getChart("0")
-            console.log(oldChart)
-            if(oldChart) {oldChart.destroy()}
-                new Chart(ctx, {
-                  type: 'line',
-                  data: {
+            let chart = Chart.getChart(ctx);
+            if(chart) {
+            // const oldChart = Chart.getChart("0");
+            // console.log(oldChart);
+                chart.destroy()
+            };
+            new Chart(ctx, {
+                type: 'line',
+                data: {
                     labels: createArray(labels),
                     datasets: [{
-                      label: `path taken by ${label}`,
-                      data: data,
-                      borderWidth: 1,
-                    //   borderColor: [rgba(152, 125, 17, 0.5)],
+                        label: `path taken by ${label}`,
+                        data: data,
+                        borderWidth: 1,
+                        //   borderColor: 'rgba(152, 125, 197, 0.8)',
                     },
-                    {
-                      label: `path taken by 33`,
-                      data: data,
-                      borderWidth: 1,
-                    //   borderColor: [rgba(152, 125, 17, 0.5)],
-                    }]
-                  },
-                  options: {
+                    // {
+                    //     label: `path taken by 7`,
+                    //     data: [7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+                    //     borderWidth: 1,
+                        
+                    // }
+                ]
+                },
+                options: {
                     scales: {
-                      y: {
-                        beginAtZero: true
-                      }
+                        y: {
+                            beginAtZero: true
+                        }
                     }
-                  }
-                });
-            }
+                }
+            });
+            canvasDiv.style.display = 'block';
+        }
 		
-
-function createArray(number){
-
-    const rangeArray = [];
-    for (let i = 0; i <= number; i++) {
-        rangeArray.push(i);
-    }
-    return rangeArray
-}
+        
+        function createArray(number){
+            
+            const rangeArray = [];
+            for (let i = 0; i <= number; i++) {
+                rangeArray.push(i);
+            }
+            return rangeArray
+        }
 
 	</script>
 </body>
