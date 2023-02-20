@@ -112,6 +112,21 @@
             border-radius: 10px;
 
         }
+
+        /* apply different styles for screens with a maximum width of 768px */
+@media only screen and (max-width: 768px) {
+  #canvasDiv {
+    width: 80vw; /* adjust aspect ratio */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #canvasDiv {
+    width: 100%; /* adjust aspect ratio */
+  }
+}
+
+
 	</style>
 </head>
 <body>
