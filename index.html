@@ -37,17 +37,34 @@
             font-style: italic;
         }
 
-		#input-section button {
-			width: 200px;
+		.btn button {
+            display: inline;
+			width: 100px;
 			height: 40px;
             border-width: 0;
             border-radius: 5px;
 			margin-top: 20px;
 			background-color: rgb(25, 122, 222);
 			color: white;
-			font-size: 20px;
+			font-size: 16px;
 			cursor: pointer;
+            /* transition: all; */
+            transition-duration: 300ms;
 		}
+        .btn button:hover{
+            background-color: rgb(1, 108, 214)
+
+        }
+        .btn .reload:hover{
+            background-color: rgb(207, 2, 2);
+
+        }
+
+        .btn .reload{
+            background-color: rgb(212, 50, 50);
+        }
+
+
 		#result-section {
 			display: none;
 			flex-direction: column;
@@ -123,7 +140,10 @@
             </div>
             
                 <input onkeypress="InputEnter()" autofocus autocomplete="false" type="number" id="number" placeholder="Enter a digit">
-                <button  onclick="calculate()">Calculate</button>
+                <div class="btn">
+                    <button  onclick="calculate()">Calculate</button>
+                    <button  onclick="reload()" class="reload">Reload</button>
+                </div>
             
 	</div>
 	<details class="example" id="result-section">
@@ -228,8 +248,12 @@
             canvasDiv.style.display = 'block';
             resultSection.style.display = 'flex';
         }
-		
-        
+
+function reload(){
+    location.reload()
+}
+		 
+        // Helper Function 
         function createArray(number){
             
             const rangeArray = [];
