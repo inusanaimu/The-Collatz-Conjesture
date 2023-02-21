@@ -11,10 +11,18 @@ body{
 #input-section input {
     width: 200px;
     height: 30px;
+    border-radius: 5px;
     margin-top: 20px;
     text-align: center;
     font-size: 20px;
+    outline: none;
 }
+#number::-webkit-outer-spin-button,
+#number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
 
 #input-section input::placeholder {
     color: dodgerblue;
@@ -22,17 +30,36 @@ body{
     font-style: italic;
 }
 
-#input-section button {
-    width: 200px;
+.btn button {
+    display: inline;
+    width: 100px;
     height: 40px;
+    border-width: 0;
+    border-radius: 5px;
     margin-top: 20px;
-    background-color: blue;
+    background-color: rgb(25, 122, 222);
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
+    /* transition: all; */
+    transition-duration: 300ms;
 }
+.btn button:hover{
+    background-color: rgb(1, 108, 214)
+
+}
+.btn .reload:hover{
+    background-color: rgb(207, 2, 2);
+
+}
+
+.btn .reload{
+    background-color: rgb(212, 50, 50);
+}
+
+
 #result-section {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     margin: 30px auto 30px auto;
@@ -73,8 +100,21 @@ body{
     max-width: 800px;
     margin: auto;
     text-align: center;
-    background-color: #eee;
-    display: block;
-    border-radius: 5px;
+    background-color: #fff;
+    display: none;
+    border-radius: 10px;
 
+}
+
+/* apply different styles for screens with a maximum width of 768px */
+@media only screen and (max-width: 768px) {
+#canvasDiv {
+width: 80vw; /* adjust aspect ratio */
+}
+}
+
+@media only screen and (max-width: 480px) {
+#canvasDiv {
+width: 100%; /* adjust aspect ratio */
+}
 }

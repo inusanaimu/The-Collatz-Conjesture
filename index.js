@@ -9,11 +9,11 @@ function InputEnter(){
 
 function calculate() {
     var number = document.getElementById("number").value;
-    if (number == '') {
+    if (number === '') {
         alert("Input a number")
         return
     }
-    if (number < 0) {
+    if (number <= 0) {
         alert("Enter a positive Integer")
         return
     }
@@ -41,42 +41,34 @@ function calculate() {
     const exists = mapArray.some(obj => JSON.stringify(obj) === JSON.stringify(newObj))
     if(!exists){
         mapArray.push(newObj)
-        console.log(mapArray)
+        plotMultiplyGrahp(mapArray)
     }
-    plotGraph(steps, label, sequence)
+    // plotGraph(steps, label, sequence)
 }
 
-function plotMultiplyGrahp(){
-    
-}
+function plotMultiplyGrahp(objsArray){
 
-function plotGraph(labels, label, data){
     const canvasDiv = document.getElementById('canvasDiv');
+    const resultSection = document.getElementById('result-section');
     const ctx = document.getElementById('myChart');
     let chart = Chart.getChart(ctx);
     if(chart) {
-    // const oldChart = Chart.getChart("0");
-    // console.log(oldChart);
         chart.destroy()
     };
+
+    const biggestSteps = findBiggestNumber(objsArray, 'steps');
     new Chart(ctx, {
         type: 'line',
-        data: {
-            labels: createArray(labels),
-            datasets: [{
-                label: `path taken by ${label}`,
-                data: data,
-                borderWidth: 1,
-                //   borderColor: 'rgba(152, 125, 197, 0.8)',
+        data:{
+            labels: createArray(biggestSteps),
+            datasets:  objsArray.map(item => {
+            console.log(item)
+            return {label: `path taken by ${item.label}`,
+                data: item.sequence,
+                borderWidth: 1}
+                }),
             },
-            // {
-            //     label: `path taken by 7`,
-            //     data: [7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
-            //     borderWidth: 1,
-                
-            // }
-        ]
-        },
+
         options: {
             scales: {
                 y: {
@@ -86,9 +78,83 @@ function plotGraph(labels, label, data){
         }
     });
     canvasDiv.style.display = 'block';
+    resultSection.style.display = 'flex';
+
+}
+
+// function plotGraph(labels, label, data){
+//     const canvasDiv = document.getElementById('canvasDiv');
+//     const resultSection = document.getElementById('result-section');
+//     const ctx = document.getElementById('myChart');
+//     let chart = Chart.getChart(ctx);
+//     if(chart) {
+//         chart.destroy()
+//     };
+//     new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//             labels: createArray(labels),
+//             datasets: [{
+//                 label: `path taken by ${label}`,
+//                 data: data,
+//                 borderWidth: 1,
+//                 //   borderColor: 'rgba(152, 125, 197, 0.8)',
+//             },
+//             // {
+//             //     label: `path taken by 7`,
+//             //     data: [7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+//             //     borderWidth: 1,
+                
+//             // }
+//         ]
+//         },
+//         options: {
+//             scales: {
+//                 y: {
+//                     beginAtZero: true
+//                 }
+//             }
+//         }
+//     });
+//     canvasDiv.style.display = 'block';
+//     resultSection.style.display = 'flex';
+// }
+
+function reload(){
+location.reload()
+}
+
+// Helper function
+function findBiggestNumber(arr, prop) {
+let biggestNum = Number.NEGATIVE_INFINITY;
+for (let obj of arr) {
+if (obj.hasOwnProperty(prop) && typeof obj[prop] === 'number') {
+if (obj[prop] > biggestNum) {
+biggestNum = obj[prop];
+}
+}
+}
+return biggestNum;
 }
 
 
+// Helper Function 
+function getLongestArray(arr) {
+let longestArr = [];
+for (let obj of arr) {
+for (let key in obj) {
+if (Array.isArray(obj[key])) {
+if (obj[key].length > longestArr.length) {
+  longestArr = obj[key];
+}
+}
+}
+}
+return longestArr;
+}
+
+ 
+// Helper Function 
 function createArray(number){
     
     const rangeArray = [];
