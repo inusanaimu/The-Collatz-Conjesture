@@ -83,7 +83,7 @@
 				}
 				sequence.push(number);
 			}
-            // console.log(steps)
+  
 			step.innerHTML = "There are "+ steps +" steps taken to arrive at 1 ";
 			result.innerHTML = "The sequence is: " + sequence.join(" | ");
 
@@ -94,7 +94,7 @@
                 mapArray.push(newObj)
                 plotMultiplyGrahp(mapArray)
             }
-            // plotGraph(steps, label, sequence)
+   
         }
         
         function plotMultiplyGrahp(objsArray){
@@ -113,7 +113,6 @@
                 data:{
                     labels: createArray(biggestSteps),
                     datasets:  objsArray.map(item => {
-                    console.log(item)
                     return {label: `path taken by ${item.label}`,
                         data: item.sequence,
                         borderWidth: 1}
