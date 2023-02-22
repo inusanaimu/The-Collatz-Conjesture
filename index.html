@@ -58,21 +58,28 @@
             }
         }
 
-		function calculate() {
-			var number = document.getElementById("number").value;
-            if (number === '') {
-                alert("Input a number")
-                return
+		function calculate(arg = null) {
+            var number;
+            if(!arg){
+                number = document.getElementById("number").value;
+                if (number === '') {
+                    alert("Input a number")
+                    return
+                }
+                if (number <= 0) {
+                    alert("Enter a positive Integer")
+                    return
+                }
+            }else{
+                number = arg;
+                console.log(number);
             }
-            if (number <= 0) {
-                alert("Enter a positive Integer")
-                return
-            }
+            
             const label = number
 			var result = document.getElementById("result");
             const step = document.getElementById("steps");
             
-			var sequence = [+number];
+			let sequence = [+number];
             let steps = 0;
 			while (number != 1) {
                 steps++
@@ -137,6 +144,25 @@
 function reload(){
     location.reload()
 }
+
+// window.onload(initialIntro())
+
+// var counter = 0;
+
+// function initialIntro() {
+//   counter++;
+//   if (counter === 10) {
+//     return;
+//   }
+
+//   setTimeout(() => {
+//     const randomNumber = Math.floor(Math.random() * 100) + 1;
+//     calculate(randomNumber);
+//     initialIntro();
+//   }, 5000);
+// }
+
+
 
 // Helper function
 function findBiggestNumber(arr, prop) {

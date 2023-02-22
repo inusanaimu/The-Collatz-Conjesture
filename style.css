@@ -1,6 +1,7 @@
 
 body{
-    background-color:rgb(40, 44, 52)
+    background-color:rgb(40, 44, 52);
+    width: 100vw;
 }
 #input-section {
     display: flex;
