@@ -1,78 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="shortcut icon" href="collatz.png" type="image/x-icon">
-	<title>Collatz Conjecture</title>
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-	<div id="input-section">
-        <div id="intro">
-            <p>
-                Try out Collatz Conjecture
-            </p>
-            <section class="details"> The Collatz conjecture is a unsolved mathematical problem which states that for any positive integer n, the following process will always reach the number 1: If n is even,
-                divide it by 2; if n is odd, multiply it by 3 and add 1. 
-                The conjecture is that this process will eventually reach 1 for any positive integer n, 
-                but this has not been proven for all numbers and remains one of the most famous unsolved problems in mathematics.</section>
-                <details class="example">
-                    <summary><b>Example of the Collatz Conjecture:</b></summary>
-                    <ul>
-                        <li>Let n = 7 even number:</li>
+    <head>
+        <link rel="shortcut icon" href="collatz.png" type="image/x-icon">
+        <title>Collatz Conjecture</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div id="input-section">
+            <div id="intro">
+                <p>
+                    Try out Collatz Conjecture
+                </p>
+                <section class="details"> The Collatz conjecture is a unsolved mathematical problem which states that for any positive integer n, the following process will always reach the number 1: If n is even,
+                    divide it by 2; if n is odd, multiply it by 3 and add 1. 
+                    The conjecture is that this process will eventually reach 1 for any positive integer n, 
+                    but this has not been proven for all numbers and remains one of the most famous unsolved problems in mathematics.</section>
+                    <details class="example">
+                        <summary><b>Example of the Collatz Conjecture:</b></summary>
                         <ul>
-                        <li>7 * 3 + 1 = 22</li>
-                        <li>22 / 2 = 11</li>
-                        <li>11 * 3 + 1 = 34 ...</li>
-            
-                    </ul>
-                <li>As you can see, the sequence eventually reaches the number 1. However, the Collatz Conjecture states that this will happen for any positive integer, not just for the example 7.</li>
-                </ul>
-            </details>
-            </div>
+                            <li>Let n = 7 even number:</li>
+                            <ul>
+                                <li>7 * 3 + 1 = 22</li>
+                                <li>22 / 2 = 11</li>
+                                <li>11 * 3 + 1 = 34 ...</li>
+                                
+                            </ul>
+                            <li>As you can see, the sequence eventually reaches the number 1. However, the Collatz Conjecture states that this will happen for any positive integer, not just for the example 7.</li>
+                        </ul>
+                    </details>
+                </div>
             
                 <input onkeypress="InputEnter()" oninput="resetDefault()" autofocus autocomplete="false" type="number" id="number" placeholder="Enter a digit">
                 <div class="btn">
                     <button  onclick="calculate()">Calculate</button>
                     <button  onclick="reload()" class="reload">Reload</button>
                 </div>
+                
+            </div>
+            <details class="example" id="result-section">
+                <summary id="steps" ></summary>
+                <p id="result"></p>
+            </details>
+        </div>
+        <div id="canvasDiv">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript">
             
-	</div>
-	<details class="example" id="result-section">
-        <summary id="steps" ></summary>
-		<p id="result"></p>
-    </details>
-	</div>
-    <div id="canvasDiv">
-        <canvas id="myChart"></canvas>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script type="text/javascript">
-
-        var mapArray = []
-
-        function resetDefault(){
+            var mapArray = []
             let hasRun = false;
-            if (!hasRun){
-                console.log('resetDefault')
-                initialIntro("clear")
+            let timeoutId
+            
+            function resetDefault(){
+                if (!hasRun){
+                    console.log('resetDefault')
+                    initialIntro("clear")
+                    mapArray=[];
+                    hasRun = true;
+                }
+                
+                
             }
-
-
-        }
-
-//         function runOnce() {
-//   let hasRun = false;
-
-//   return function() {
-//     if (!hasRun) {
-//       console.log("This function will only run once.");
-//       hasRun = true;
-//     }
-//   };
-// }
-
-        function InputEnter(){
+            
+          
+            function InputEnter(){
             if (event.key === "Enter"){
                 event.preventDefault();
                 calculate();
@@ -171,34 +164,27 @@ function reload(){
 }
 
 
-
 function initialIntro(arg) {
+    console.log("initialIntro")
     if(!arg){
-        const timeoutId = setTimeout(() => {
+         timeoutId = setTimeout(() => {
+            console.log('run')
              const randomNumber = Math.floor(Math.random() * 100) + 1;
              calculate(randomNumber);
              initialIntro();
          }, 5000);
+         timeoutId();
         }
 
         clearTimeout(timeoutId)
 
     }
-    // else{
-    //     const canvasDiv = document.getElementById('canvasDiv');
-    //     const resultSection = document.getElementById('result-section');
-    //     counter = 0;
-    //     initialIntro()
-        
-    //     setTimeout(()=>{
-    //         canvasDiv.style.display = 'none';
-    //         resultSection.style.display = 'none';
-    //         mapArray=[]
-    //     }, 4000)
-    // }
 
 
-// window.onload(initialIntro())
+window.onload = (() =>{
+    initialIntro();
+    console.log('loaded')
+})
 
 
 // Helper function
