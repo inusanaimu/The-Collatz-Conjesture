@@ -31,7 +31,7 @@
             </details>
             </div>
             
-                <input onkeypress="InputEnter()" autofocus autocomplete="false" type="number" id="number" placeholder="Enter a digit">
+                <input onkeypress="InputEnter()" oninput="resetDefault()" autofocus autocomplete="false" type="number" id="number" placeholder="Enter a digit">
                 <div class="btn">
                     <button  onclick="calculate()">Calculate</button>
                     <button  onclick="reload()" class="reload">Reload</button>
@@ -50,6 +50,27 @@
 	<script type="text/javascript">
 
         var mapArray = []
+
+        function resetDefault(){
+            let hasRun = false;
+            if (!hasRun){
+                console.log('resetDefault')
+                initialIntro("clear")
+            }
+
+
+        }
+
+//         function runOnce() {
+//   let hasRun = false;
+
+//   return function() {
+//     if (!hasRun) {
+//       console.log("This function will only run once.");
+//       hasRun = true;
+//     }
+//   };
+// }
 
         function InputEnter(){
             if (event.key === "Enter"){
@@ -101,6 +122,10 @@
                 mapArray.push(newObj)
                 plotMultiplyGrahp(mapArray)
             }
+
+            if (mapArray.length == 10){
+                mapArray.shift()
+            }
    
         }
         
@@ -145,36 +170,48 @@ function reload(){
     location.reload()
 }
 
+
+
+function initialIntro(arg) {
+    if(!arg){
+        const timeoutId = setTimeout(() => {
+             const randomNumber = Math.floor(Math.random() * 100) + 1;
+             calculate(randomNumber);
+             initialIntro();
+         }, 5000);
+        }
+
+        clearTimeout(timeoutId)
+
+    }
+    // else{
+    //     const canvasDiv = document.getElementById('canvasDiv');
+    //     const resultSection = document.getElementById('result-section');
+    //     counter = 0;
+    //     initialIntro()
+        
+    //     setTimeout(()=>{
+    //         canvasDiv.style.display = 'none';
+    //         resultSection.style.display = 'none';
+    //         mapArray=[]
+    //     }, 4000)
+    // }
+
+
 // window.onload(initialIntro())
-
-// var counter = 0;
-
-// function initialIntro() {
-//   counter++;
-//   if (counter === 10) {
-//     return;
-//   }
-
-//   setTimeout(() => {
-//     const randomNumber = Math.floor(Math.random() * 100) + 1;
-//     calculate(randomNumber);
-//     initialIntro();
-//   }, 5000);
-// }
-
 
 
 // Helper function
 function findBiggestNumber(arr, prop) {
-  let biggestNum = Number.NEGATIVE_INFINITY;
-  for (let obj of arr) {
-    if (obj.hasOwnProperty(prop) && typeof obj[prop] === 'number') {
-      if (obj[prop] > biggestNum) {
-        biggestNum = obj[prop];
-      }
+    let biggestNum = Number.NEGATIVE_INFINITY;
+    for (let obj of arr) {
+        if (obj.hasOwnProperty(prop) && typeof obj[prop] === 'number') {
+            if (obj[prop] > biggestNum) {
+                biggestNum = obj[prop];
+            }
+        }
     }
-  }
-  return biggestNum;
+    return biggestNum;
 }
 
 
