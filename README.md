@@ -23,4 +23,4 @@ The app can also be used to compare the paths taken for multiple integers. Simpl
 
 **Acknowledgements**
 This project was created by Inusa Naimu.
-This project was inspired by the [**Veritasium**](https://www.youtube.com/results?search_query=veritasium+collatz+conjecture) YouTube channel and its video on the Collatz Conjecture., and uses the [**Chart.js**](https://www.chartjs.org/) library for graphing.
+This project was inspired by the [**Veritasium**](https://www.youtube.com/results?search_query=veritasium+collatz+conjecture) YouTube channel and its video on the Collatz Conjecture, and its uses the [**Chart.js**](https://www.chartjs.org/) library for graphing.
