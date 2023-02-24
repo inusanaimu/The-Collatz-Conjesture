@@ -5,7 +5,7 @@ The Collatz Conjecture is an unsolved problem in mathematics that involves start
 This project provides a web-based visualizer for the Collatz Conjecture. Users can enter a positive integer, and the web app will display the steps needed to reach 1 for that integer. The app also plots the path taken for each integer entered, creating a graph of the sequences for comparison.
 
 **##Getting Started**
-To use this web app, simply open the index.html file in your web browser. Alternatively, you can visit the live demo on [**myPage**]([https://www.example.com](https://collartz.netlify.app/)) .
+To use this web app, simply open the index.html file in your web browser. Alternatively, you can visit the live demo on '[**myPage**]([https://collartz.netlify.app/])) .
 
 **###Usage**
 To use the app, enter a positive integer in the input field and press enter. The app will display the steps needed to reach 1 for that integer, as well as a graph of the path taken.
