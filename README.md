@@ -1,25 +1,19 @@
-﻿# The-Collatz-Conjesture
-Collatz Conjecture
-Introduction
-The Collatz conjecture is a conjecture in mathematics that states that for any positive integer n, the sequence obtained from the following algorithm will eventually reach 1:
+﻿# The-Collatz-Conjesture Visualizer
 
-If n is even, divide it by 2.
-If n is odd, multiply it by 3 and add 1.
-This project is a web-based application that implements the Collatz Conjecture algorithm and visualizes the sequence of numbers.
+The Collatz Conjecture is an unsolved problem in mathematics that involves starting with any positive integer, and then following a series of steps to eventually reach the number 1. The conjecture states that, no matter what number you start with, you will always eventually reach 1.
 
-Requirements
-The following technologies are required to run this application:
+This project provides a web-based visualizer for the Collatz Conjecture. Users can enter a positive integer, and the web app will display the steps needed to reach 1 for that integer. The app also plots the path taken for each integer entered, creating a graph of the sequences for comparison.
 
-HTML
-CSS
-JavaScript
-Installation
-To install and run the application, follow these steps:
+**Getting Started**
+To use this web app, simply open the index.html file in your web browser. Alternatively, you can visit the live demo on [**myPage**]([https://www.example.com](https://collartz.netlify.app/)) .
 
-Clone or download the repository to your local machine.
-Open the index.html file in a web browser.
-Usage
-The application allows the user to input a positive integer and generate the sequence of numbers according to the Collatz Conjecture algorithm. The sequence is displayed in a table, with each number in a separate row. The user can also reset the input and start again with a new number.
+**Usage**
+To use the app, enter a positive integer in the input field and press enter. The app will display the steps needed to reach 1 for that integer, as well as a graph of the path taken.
 
-Conclusion
-This project is a simple implementation of the Collatz Conjecture algorithm and a visualization of the sequence of numbers. It can be used as a learning tool to understand the concept and the behavior of the algorithm.
+The app can also be used to compare the paths taken for multiple integers. Simply enter a new integer, and the graph will update to show the new path alongside the existing ones. The graph will only show the 10 most recently entered integers, and will remove older entries as new ones are added.
+
+#License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+**Acknowledgements**
+This project was created by Inusa Naimu. It was inspired by the Collatz Conjecture, and uses the [**Chart.js**](https://www.chartjs.org/) library for graphing.
