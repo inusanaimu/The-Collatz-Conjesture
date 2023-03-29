@@ -153,13 +153,17 @@ function findBiggestNumber(arr, prop) {
 
         // Helper Function 
 function getLongestArray(arr) {
+  let longestArrLength = 0;
   let longestArr = [];
+	
   for (let obj of arr) {
     for (let key in obj) {
       if (Array.isArray(obj[key])) {
-        if (obj[key].length > longestArr.length) {
-          longestArr = obj[key];
+        if (obj[key].length > longestArrLength) {
+		longestArrLength = obj[key].length;
+          	longestArr = obj[key];
         }
+	      break; // Break out of inner loop as soon as an array is found
       }
     }
   }
